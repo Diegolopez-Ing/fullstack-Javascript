@@ -30,11 +30,4 @@ typeof objeto1.prop3
 
 const diego=true
 typeof diego
-typeof Symbol()
-
-
-
-
-
-
-
+console.log(typeof Symbol())
