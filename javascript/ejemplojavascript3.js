@@ -22,10 +22,11 @@ console.log(b);
 
 function multiplicar(numeros){
     console.log(arguments);
-    return num3-num4
+    return numeros.num3*numeros.num4
 }
 
-const b=restar({num3:3,num4:4})
-console.log(b);
+const f=multiplicar({num3:3,
+    num4:4})
+console.log(f);
 
 
