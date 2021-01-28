@@ -5,17 +5,87 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
-        input{
+        *{
+            box-sizing: border-box;
+
+        }
+
+        body{
+            background-color: wheat;
+        }
+
+        input[type=text],select,textarea{
             width: 100%;
+            padding: 14px 50px;
+            margin: 10px 0px;
+            border: 2px solid red;
+            border-radius: 5px 10px 15px 17px;
+            background-color: rgb(33, 199, 107);
+            color: blanchedalmond;
+            background-image: url("searchicon.png");
+            background-repeat: no-repeat;
+            background-position: 10xp;
+            resize: vertical;
+        }
+
+        label{
+            padding: 12px 12px 0;
+            display: block;
+            color: black;
+        }
+        button{
+            background-color: #4CAF50;
+            color: white;
+            padding: 12px 32px;
+            text-decoration: none;
+            margin: 4px 2px;
+            border-radius: 7px;
+            cursor: pointer;         
+        }
+
+        button:hover{
+            background-color: yellowgreen;
+        }
+        ::placeholder{
+            color: green;
+        }
+
+        input:focus{
+            background-color: lightblue;
+            border: 4px solid yellow;
+            border-radius: 5px;
+        }
+
+        select{
+            height: 40%;
+            margin-bottom: 6px;
+        }
+        .container{
+            border-radius: 4px;
+            background-color: gray ;
+            padding: 18px;
+            width: 500px;
+            margin: auto;
         }
     </style>
 </head>
 <body>
     <h1>Fomrularios estilizado con css</h1>
-    <div>
+    <div class="container">
         <form action="" method="POST">
             <label for="nomnre">Nombre</label>
-            <input type="text" name="nombre" id="nombre" placeholder="Pon tu nombre aqui">
+            <input type="text" name="nombre" id="nombre" placeholder="Pon tu nombre aqui" required>
+            <label for="apellido">Apellido</label>
+            <input type="text" name="apellido" id="apellido" placeholder="Pon tu apellido aqui" required>
+            <label for="pais">País</label>
+            <select name="pais" id="pais" required>
+                <option value="" disabled selected hidden>Selecciones</option>
+                <option value="">Colombia</option>
+                <option value="">Peru</option>
+                <option value="">Mexico</option>
+                <option value="">Venezuela</option>
+            </select>
+            <button type="submit">Enviar</button>
         </form>
     </div>
 </body>
