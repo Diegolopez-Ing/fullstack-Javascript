@@ -18,7 +18,7 @@ var z= 'primera variable'
 let x='y'
 
 {
-    let i='INformacion'
+    const i='INformacion'
     let u= 'otra cosa'
     {
         const r=3
@@ -27,8 +27,7 @@ let x='y'
             u=5
         }
     }
+    console.log(i);
 }
 console.log(x);
-console.log(i);
 console.log(j);
-console.log(u);
