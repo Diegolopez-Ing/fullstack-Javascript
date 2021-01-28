@@ -30,4 +30,7 @@ else{
     console.log('No canta y no toma cerveza');    
 }
 
-persona2.edad ==22
+//Diferencia de los == y ===
+console.log(persona2.edad == '22');
+console.log(persona2.edad === '22');
+
