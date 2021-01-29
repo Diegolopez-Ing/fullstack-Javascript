@@ -54,3 +54,26 @@ let resultado=() =>a + b + 100
 console.log(resultado());
 
 
+///
+
+function miFuncion11() {        
+    this.miFuncion12 = function miFuncion12() {
+        this.miFuncion13 = function miFuncion13() {
+            this.miFuncion14 = function miFuncion14() {
+                return this
+            }
+            this.miFuncion15= ()=>{
+                return this
+            }
+        }
+    }
+}
+
+const aa= new miFuncion11()
+console.log(aa.miFuncion12());
+
+const bbbb = new aa.miFuncion12()
+
+
+
+
