@@ -20,7 +20,7 @@ Timeout(()=>{
 
 miPromesa.then((respuesa)=>console.log(respuesa),(razon)=>console.log(razon))
 
-
+///|||||||||||||||||||||      AWAIT        |||||||||||||||
 
 function resolveAfter2Seconds(x) {
     return new Promise(resolve => {
