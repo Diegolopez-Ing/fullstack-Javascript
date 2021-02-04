@@ -44,24 +44,20 @@ function listarMascotas() {
 
 function enviarDatos(evt) {
     evt.preventDefault()
-    const accion=btnGuardar.innerHTML
-    switch (accion) {
-        case 'editar':
-            mascotas[indice.value ]=datos
-            break;    
-        default:
-            mascotas.push(datos)
-            break;
-    }
-    
-    
-    console.log('evento',evt);
     const datos={
         tipo: tipo.value,
         nombre: nombre.value,
         dueno: dueno.value        
     }
-    mascotas.push(datos)
+    const accion=btnGuardar.innerHTML
+    switch (accion) {
+        case 'Editar':
+            mascotas[indice.value]=datos
+            break;    
+        default:
+            mascotas.push(datos)
+            break;
+    }       
     listarMascotas()
 }
 
@@ -75,12 +71,10 @@ function editar(index) {
         dueno.value=mascota.dueno
         indice.value= index
     }
-
 }
 
 listarMascotas()
 
 form.onsubmit = enviarDatos
 btnGuardar.onclick= enviarDatos
-
 editar()
