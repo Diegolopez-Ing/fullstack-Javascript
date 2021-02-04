@@ -44,6 +44,16 @@ function listarMascotas() {
 
 function enviarDatos(evt) {
     evt.preventDefault()
+    const accion=btnGuardar.innerHTML
+    switch (accion) {
+        case 'editar':
+            mascotas[indice.value ]=datos
+            break;    
+        default:
+            mascotas.push(datos)
+            break;
+    }
+    
     
     console.log('evento',evt);
     const datos={
@@ -54,9 +64,11 @@ function enviarDatos(evt) {
     mascotas.push(datos)
     listarMascotas()
 }
+
 function editar(index) {
-    btnGuardar.innerHT='Editar'
     return function cuandoHagoClick() {
+        btnGuardar.innerHTML='Editar'
+        // $('#staticBackdrop').modal('toggle')
         const mascota=mascotas[index]
         nombre.value=mascota.nombre
         tipo.value=mascota.tipo
