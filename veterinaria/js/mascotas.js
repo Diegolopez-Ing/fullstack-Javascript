@@ -33,13 +33,14 @@ function listarMascotas() {
         <td>
             <div class="btn-group" role="group" aria-label="Basic example">
                 <button type="button" class="btn btn-info editar" data-bs-toggle="modal" data-bs-target="#staticBackdrop"><i class="bi bi-pencil-square"></i></button>
-                <button type="button" class="btn btn-danger"><i class="bi bi-trash"></i></button>
+                <button type="button" class="btn btn-danger eliminar"><i class="bi bi-trash"></i></button>
             </div>
         </td>
     </tr>
     <tr>`).join('')
     listaMascotas.innerHTML = htmlMascotas
     Array.from(document.getElementsByClassName('editar')).forEach((botonEditar,index)=>botonEditar.onclick=editar(index))
+    Array.from(document.getElementsByClassName('eliminar')).forEach((botonEliminar,index)=>botonEliminar.onclick=eliminar(index))
 }
 
 function enviarDatos(evt) {
@@ -79,7 +80,17 @@ function resetModal() {
     nombre.value=''
     tipo.value=''
     dueno.value=''
+    indice.value=''
     btnGuardar.innerHTML='Crear'
+}
+
+function eliminar(index) {    
+    return function clickEliminar() {
+        console.log('index',index); 
+        mascotas=mascotas.filter((mascota,indiceMascota)=>indiceMascota !== index)
+        listarMascotas()
+    }
+    
 }
 
 listarMascotas()
