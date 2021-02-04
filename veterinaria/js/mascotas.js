@@ -32,14 +32,14 @@ function listarMascotas() {
         <td>${mascota.dueno}</td>
         <td>
             <div class="btn-group" role="group" aria-label="Basic example">
-                <button type="button" class="btn btn-info editar" data-indice=${index}><i class="bi bi-pencil-square"></i></button>
+                <button type="button" class="btn btn-info editar"><i class="bi bi-pencil-square"></i></button>
                 <button type="button" class="btn btn-danger"><i class="bi bi-trash"></i></button>
             </div>
         </td>
     </tr>
     <tr>`).join('')
     listaMascotas.innerHTML = htmlMascotas
-    Array.from(document.getElementsByClassName('editar')).forEach((botonEditar)=>botonEditar.onclick=editar)
+    Array.from(document.getElementsByClassName('editar')).forEach((botonEditar,index)=>botonEditar.onclick=editar(index))
 }
 
 function enviarDatos(evt) {
@@ -52,8 +52,11 @@ function enviarDatos(evt) {
     mascotas.push(datos)
     listarMascotas()
 }
-function editar(evt) {
-    console.log('editar',evt);
+function editar(indice) {
+    return function cuandoHagoClick() {
+        console.log(indice);
+    }
+
 }
 
 listarMascotas()
