@@ -59,6 +59,7 @@ function enviarDatos(evt) {
             break;
     }       
     listarMascotas()
+    resetModal()
 }
 
 function editar(index) {
@@ -70,7 +71,15 @@ function editar(index) {
         tipo.value=mascota.tipo
         dueno.value=mascota.dueno
         indice.value= index
+        
     }
+}
+
+function resetModal() {
+    nombre.value=''
+    tipo.value=''
+    dueno.value=''
+    btnGuardar.innerHTML='Crear'
 }
 
 listarMascotas()
