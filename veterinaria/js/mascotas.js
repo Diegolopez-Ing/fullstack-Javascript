@@ -32,7 +32,7 @@ function listarMascotas() {
         <td>${mascota.dueno}</td>
         <td>
             <div class="btn-group" role="group" aria-label="Basic example">
-                <button type="button" class="btn btn-info editar"><i class="bi bi-pencil-square"></i></button>
+                <button type="button" class="btn btn-info editar" data-bs-toggle="modal" data-bs-target="#staticBackdrop"><i class="bi bi-pencil-square"></i></button>
                 <button type="button" class="btn btn-danger"><i class="bi bi-trash"></i></button>
             </div>
         </td>
@@ -43,6 +43,8 @@ function listarMascotas() {
 }
 
 function enviarDatos(evt) {
+    evt.preventDefault()
+    
     console.log('evento',evt);
     const datos={
         tipo: tipo.value,
@@ -52,9 +54,14 @@ function enviarDatos(evt) {
     mascotas.push(datos)
     listarMascotas()
 }
-function editar(indice) {
+function editar(index) {
+    btnGuardar.innerHT='Editar'
     return function cuandoHagoClick() {
-        console.log(indice);
+        const mascota=mascotas[index]
+        nombre.value=mascota.nombre
+        tipo.value=mascota.tipo
+        dueno.value=mascota.dueno
+        indice.value= index
     }
 
 }
