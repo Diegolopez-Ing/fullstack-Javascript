@@ -11,15 +11,16 @@
         integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
-    <title>Hello, world!</title>
+    <title>Veterinaria!</title>
 </head>
 
 <body>
-    <h1>Hello, world!</h1>
+    <!--<h1>Hello, world!</h1>-->
     <div class="container">
+        <!---Navbar-->
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <div class="container-fluid">
-                <a class="navbar-brand" href="#">Navbar</a>
+                <a class="navbar-brand" href="#">Veterinari@s</a>
                 <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false"
                     aria-label="Toggle navigation">
@@ -28,7 +29,7 @@
                 <div class="navbar-collapse collapse" id="navbarColor01">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="index.html">Mascotas</a>
+                            <a class="nav-link active" aria-current="page" href="index.html">veterinarias</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="veterinarias.html">Veterinari@s</a>
@@ -37,19 +38,22 @@
                             <a class="nav-link" href="consulta.html">Consultas</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="dueno.html">Dueños</a>
+                            <a class="nav-link" href="pais.html">Dueños</a>
                         </li>
                     </ul>
-                    <form class="d-flex">
+                    <form id="form" class="d-flex">
                         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
                         <button class="btn btn-outline-light" type="submit">Search</button>
                     </form>
                 </div>
             </div>
         </nav>
+        <!--FIN NAVBAR--->
+
 
         <div class="action-menu">
             <!-- Button trigger modal -->
+            <h1>Veterinari@s</h1>
             <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
                 Nueva
             </button>
@@ -59,49 +63,15 @@
             <thead class="table-dark">
                 <tr>
                     <th scope="col">#</th>
-                    <th scope="col">First</th>
-                    <th scope="col">Last</th>
-                    <th scope="col">Handle</th>
-                    <th scope="col">Handle</th>
+                    <th scope="col">Identificacion</th>
+                    <th scope="col">Pais</th>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Apellido</th>
+                    <th scope="col">Acciones</th>
                 </tr>
             </thead>
-            <tbody>
-                <tr>
-                    <th scope="row">1</th>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td>@mdo</td>
-                    <td>
-                        <div class="btn-group" role="group" aria-label="Basic example">
-                            <button type="button" class="btn btn-info" ><i class="bi bi-pencil-square"></i></button>
-                            <button type="button" class="btn btn-danger"><i class="bi bi-trash"></i></button>
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <th scope="row">2</th>
-                    <td>Jacob</td>
-                    <td>Thornton</td>
-                    <td>@fat</td>
-                    <td>
-                        <div class="btn-group" role="group" aria-label="Basic example">
-                            <button type="button" class="btn btn-info" ><i class="bi bi-pencil-square"></i></button>
-                            <button type="button" class="btn btn-danger"><i class="bi bi-trash"></i></button>
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <th scope="row">3</th>
-                    <td >Larry the Bird</td>
-                    <td>@twitter</td>
-                    <td>@rey</td>
-                    <td>
-                        <div class="btn-group" role="group" aria-label="Basic example">
-                            <button type="button" class="btn btn-info" ><i class="bi bi-pencil-square"></i></button>
-                            <button type="button" class="btn btn-danger"><i class="bi bi-trash"></i></button>
-                        </div>
-                    </td>
-                </tr>
+            <tbody id="lista-veterinarias">
+
             </tbody>
         </table>
     </div>
@@ -112,34 +82,45 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="staticBackdropLabel">Nueva Masscota</h5>
+                    <h5 class="modal-title" id="staticBackdropLabel">Nuevo Dueño</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <div class="row g-3" id="select">
-                        <div class="col">
-                            <select class="form-select" aria-label="Default select example">
-                                <option selected>Tipo Animal</option>
-                                <option value="1">One</option>
-                                <option value="2">Two</option>
-                                <option value="3">Three</option>
-                              </select>
+                    <form id="form">
+                        <input type="hidden" id="indice">
+                        <div class="row g-3">
+                            <div class="col">
+                                <select id="pais" class="form-select" aria-label="Default select example">
+                                    <option selected>Pais</option>
+                                    <option>Colombia</option>
+                                    <option>Venezuela</option>
+                                    <option>Ecuador</option>
+                                    <option>Bolivia</option>
+                                </select>
+                            </div>
+
+                            <div class="col">
+                                <input type="text" id="identificacion" class="form-control" name="identificacion" placeholder="Identificacion"
+                                    aria-label="Identificacion">
+                            </div>
+                            <div class="row g-3">
+                            <div class="col">
+                                <input type="text" id="nombre" class="form-control" name="nombre" placeholder="Nombre"
+                                    aria-label="Nombre">
+                            </div>
+                            <div class="col">
+                                <input type="text" id="apellido" class="form-control" name="apellido" placeholder="Apellido"
+                                    aria-label="Apellido">
+                            </div>
                         </div>
-                    </div>
-                    <div class="row g-3">
-                        
-                        <div class="col">
-                          <input type="text" class="form-control" placeholder="First name" aria-label="First name">
+
                         </div>
-                        <div class="col">
-                          <input type="text" class="form-control" placeholder="Last name" aria-label="Last name">
-                        </div>
-                        
-                    </div>
+                    </form>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Understood</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                    <button type="button" class="btn btn-primary" id="btn-guardar"
+                        data-bs-dismiss="modal">Guardar</button>
                 </div>
             </div>
         </div>
@@ -148,6 +129,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"
         crossorigin="anonymous"></script>
+    <script src="js/veterinarias.js"></script>
 
 
 </body>
