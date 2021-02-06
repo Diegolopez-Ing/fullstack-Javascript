@@ -4,11 +4,17 @@ const url = require('url');
 const server = http.createServer((req, res) => {
     const urlActual= req.url
     const urlParseada= url.parse(urlActual,true)
-    console.log({urlActual,urlParseada});
-    //1. Obtendremos la URL desde el objeto req
-    //2. Obtener la ruta
+        //2. Obtener la ruta
+    const ruta=urlParseada.pathname
+
     //3. enviar una respuesta dependiendo de la ruta
-  res.end('Hola Diego en el server http');
+    if (ruta=== '/ruta') {
+        res.end('Hola Diego en el server http');
+    }
+    else{
+        res.end('Estas en una ruta que no conozco');
+
+    }
 });
 
 server.listen(5000,()=>{
