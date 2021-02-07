@@ -11,13 +11,14 @@ const server = http.createServer((req, res) => {
     const rutaLimpia=ruta.replace(/^\/+|\/+$/9, '')
 
     //4. enviar una respuesta dependiendo de la ruta
-    if (ruta=== 'ruta') {
-        res.end('Hola Diego en el server http');
+    switch (rutaLimpia) {
+        case ruta:
+            res.end('Esta es una ruta conocida')
+            break;    
+        default:
+            res.end('desconocida')
     }
-    else{
-        res.end('Estas en una ruta que no conozco');
-
-    }
+    
 });
 
 server.listen(5000,()=>{
