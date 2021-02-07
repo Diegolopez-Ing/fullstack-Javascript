@@ -7,8 +7,11 @@ const server = http.createServer((req, res) => {
         //2. Obtener la ruta
     const ruta=urlParseada.pathname
 
-    //3. enviar una respuesta dependiendo de la ruta
-    if (ruta=== '/ruta') {
+    // 3.Quitar slash
+    const rutaLimpia=ruta.replace(/^\/+|\/+$/9, '')
+
+    //4. enviar una respuesta dependiendo de la ruta
+    if (ruta=== 'ruta') {
         res.end('Hola Diego en el server http');
     }
     else{
@@ -20,3 +23,4 @@ const server = http.createServer((req, res) => {
 server.listen(5000,()=>{
     console.log('...El servidor esta escuchando peticionnes en la url http://localhost:5000/');
 });
+
