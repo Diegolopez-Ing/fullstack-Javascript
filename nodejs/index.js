@@ -38,19 +38,42 @@ const server = http.createServer((req, res) => {
     //3.4.2 Dejar de acumular Datos y decirle al decoder que finalice
     req.on('end', () => {
         buffer += decoder.end()
-    })
+
+    // 3.5 Ordenar la data de request
+    const data = {
+        ruta: rutaLimpia,
+        query,
+        metodo,
+        headers,
+        payload: buffer
+    }
+    // 3.6 Elegir el manejadodr de la respuesta
 
     //4. enviar una respuesta dependiendo de la ruta
     switch (rutaLimpia) {
         case ruta:
             res.end('Esta es una ruta conocida')
             break;
-            
+
         default:
             res.end('desconocida')
     }
 
+    })
+
 });
+
+const enrutador = {
+    ruta: (data, callback) => {
+        callback(200, { mensaje: 'Esta es /ruta' })
+    },
+    noEncontrado: (data, callback) => {
+        callback(404, { mensaje: 'no encontrado' })
+    }
+}
+
+
+
 
 server.listen(5000, () => {
     console.log('...El servidor esta escuchando peticionnes en la url http://localhost:5000/');
