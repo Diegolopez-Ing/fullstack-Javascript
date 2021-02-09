@@ -9,10 +9,17 @@ const server = http.createServer((req, res) => {
     const ruta=urlParseada.pathname
 
     // 3.Quitar slash
-    const rutaLimpia=ruta.replace(/^\/+|\/+$/9, '')
+    const rutaLimpia=ruta.replace(/^\/+|\/+$/g,'')
 
 // 3.1 Método HTTP
-    console.log('req.method',req.method);
+    console.log('req.method',req.method.toLowerCase());
+    
+    // Obtener Variables del query url parseado
+    // console.log({urlParseada});
+    const { query }= urlParseada
+    console.log({query});
+
+
 
     //4. enviar una respuesta dependiendo de la ruta
     switch (rutaLimpia) {
