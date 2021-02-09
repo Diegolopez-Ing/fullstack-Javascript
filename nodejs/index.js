@@ -48,8 +48,14 @@ const server = http.createServer((req, res) => {
         payload: buffer
     }
     // 3.6 Elegir el manejadodr de la respuesta
+    let handler
+    if (rutaLimpia && enrutador[rutaLimpia]) {
+        handler=enrutador[rutaLimpia]
+    }else{
+        handler=enrutador.noEncontrado
+    }
 
-    //4. enviar una respuesta dependiendo de la ruta
+    //4. Ejecutar el handler(manejador)para enviar la respuesta
     switch (rutaLimpia) {
         case ruta:
             res.end('Esta es una ruta conocida')
