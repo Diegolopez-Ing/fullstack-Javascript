@@ -4,12 +4,15 @@ const url = require('url');
 const server = http.createServer((req, res) => {
     const urlActual= req.url
     const urlParseada= url.parse(urlActual,true)
-    
+
         //2. Obtener la ruta
     const ruta=urlParseada.pathname
 
     // 3.Quitar slash
     const rutaLimpia=ruta.replace(/^\/+|\/+$/9, '')
+
+// 3.1 Método HTTP
+    console.log('req.method',req.method);
 
     //4. enviar una respuesta dependiendo de la ruta
     switch (rutaLimpia) {
