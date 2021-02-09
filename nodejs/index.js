@@ -12,13 +12,17 @@ const server = http.createServer((req, res) => {
     const rutaLimpia=ruta.replace(/^\/+|\/+$/g,'')
 
 // 3.1 Método HTTP
-    console.log('req.method',req.method.toLowerCase());
+    const method=req.method.toLowerCase();
+
     
-    // Obtener Variables del query url parseado
+    // 3.2 Obtener Variables del query url parseado
     // console.log({urlParseada});
-    const { query }= urlParseada
+    const { query ={} }= urlParseada
     console.log({query});
 
+    // 3.3 Obtener los headers 
+    const { headers} =req
+    console.log(headers);
 
 
     //4. enviar una respuesta dependiendo de la ruta
