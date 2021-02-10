@@ -45,6 +45,9 @@ const callbackDelServidor = (req, res) => {
     //3.4.2 Dejar de acumular Datos y decirle al decoder que finalice
     req.on('end', () => {
         buffer += decoder.end()
+        if (headers['content-type']==='application/json') {
+            buffer=JSON.parse(buffer)
+        }
 
     // 3.5 Ordenar la data de request
     const data = {
@@ -85,6 +88,10 @@ const enrutador = {
     mascotas: {
         get:(data, callback) => {
             callback(200,recursos.mascotas)
+        },
+        post:(data, callback) => {
+            recursos.mascotas.push(data.payload)
+            callback(201,data.payload)
         }
     },
     noEncontrado: (data, callback) => {
