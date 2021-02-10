@@ -3,7 +3,8 @@ const url = require('url');
 const StringDecoder = require('string_decoder').StringDecoder
 
 
-const server = http.createServer((req, res) => {
+const callbackDelServidor = (req, res) => {
+    // 1. obtener url desde el objeto request
     const urlActual = req.url
     const urlParseada = url.parse(urlActual, true)
 
@@ -14,17 +15,14 @@ const server = http.createServer((req, res) => {
     const rutaLimpia = ruta.replace(/^\/+|\/+$/g, '')
 
     // 3.1 Método HTTP
-    const method = req.method.toLowerCase();
+    const metodo = req.method.toLowerCase();
 
 
     // 3.2 Obtener Variables del query url parseado
-    // console.log({urlParseada});
     const { query = {} } = urlParseada
-    console.log({ query });
 
     // 3.3 Obtener los headers 
-    const { headers } = req
-    console.log(headers);
+    const { headers={} } = req
 
     // 3.4 Obtener payload en el caso de haberlo
     const decoder = new StringDecoder('utf-8')
@@ -56,29 +54,32 @@ const server = http.createServer((req, res) => {
     }
 
     //4. Ejecutar el handler(manejador)para enviar la respuesta
-    switch (rutaLimpia) {
-        case ruta:
-            res.end('Esta es una ruta conocida')
-            break;
-
-        default:
-            res.end('desconocida')
-    }
-
+    if (typeof handler === 'function') {
+        handler(data,(statusCode=200,mensaje)=>{
+            const respuesta=JSON.stringify(mensaje)
+            res.writeHead(statusCode)
+            // Linea donde realmente estamos respondiendo a la aplicacion Cliente
+            res.end(respuesta)
+        })
+    } 
     })
 
-});
+}
 
 const enrutador = {
     ruta: (data, callback) => {
         callback(200, { mensaje: 'Esta es /ruta' })
     },
+    usuarios: (data, callback) => {
+        callback(200, [{nombre: 'usuario 1'},{nombre: 'usuario 2'}])
+    },        
     noEncontrado: (data, callback) => {
         callback(404, { mensaje: 'no encontrado' })
     }
 }
 
 
+const server=http.createServer(callbackDelServidor)
 
 
 server.listen(5000, () => {
