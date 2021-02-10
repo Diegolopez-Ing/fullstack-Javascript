@@ -57,8 +57,8 @@ const callbackDelServidor = (req, res) => {
     console.log({data});
     // 3.6 Elegir el manejadodr de la respuesta
     let handler
-    if (rutaLimpia && enrutador[rutaLimpia]) {
-        handler=enrutador[rutaLimpia]
+    if (rutaLimpia && enrutador[rutaLimpia] && enrutador[rutaLimpia][metodo]) {
+        handler=enrutador[rutaLimpia][metodo]
     }else{
         handler=enrutador.noEncontrado
     }
@@ -82,8 +82,10 @@ const enrutador = {
     ruta: (data, callback) => {
         callback(200, { mensaje: 'Esta es /ruta' })
     },
-    mascotas: (data, callback) => {
-        callback(200,recursos.mascotas)
+    mascotas: {
+        get:(data, callback) => {
+            callback(200,recursos.mascotas)
+        }
     },
     noEncontrado: (data, callback) => {
         callback(404, { mensaje: 'no encontrado' })
