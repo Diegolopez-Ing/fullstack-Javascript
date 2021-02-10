@@ -46,6 +46,7 @@ const callbackDelServidor = (req, res) => {
         headers,
         payload: buffer
     }
+    console.log({data});
     // 3.6 Elegir el manejadodr de la respuesta
     let handler
     if (rutaLimpia && enrutador[rutaLimpia]) {
@@ -58,6 +59,7 @@ const callbackDelServidor = (req, res) => {
     if (typeof handler === 'function') {
         handler(data,(statusCode=200,mensaje)=>{
             const respuesta=JSON.stringify(mensaje)
+            res.setHeader('Content-Type','application/json')
             res.writeHead(statusCode)
 
     //4.1 Linea donde realmente estamos respondiendo a la aplicacion Cliente
