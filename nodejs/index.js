@@ -89,9 +89,6 @@ const callbackDelServidor = (req, res) => {
 
 }
 
-
-
-
 const server=http.createServer(callbackDelServidor)
 
 server.listen(5000, () => {
