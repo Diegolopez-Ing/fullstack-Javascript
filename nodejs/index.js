@@ -1,15 +1,12 @@
 const http = require("http");
-const url = require("url");
-const StringDecoder = require("string_decoder").StringDecoder
-const enrutador=require("./enrutador")
-const requestHandler=require("./request-handlerr")
+const requestHandler=require("./request-handler")
 
 global.recursos={
     mascotas:[
-        { tipo: "perro",nombre:"Firulay",dueno:"Diego"},
-        { tipo: "perro",nombre:"Firulay",dueno:"Diego"},
-        { tipo: "perro",nombre:"Firulay",dueno:"Diego"},
-        { tipo: "perro",nombre:"Firulay",dueno:"Diego"},
+        { tipo: "Gato",nombre:"Firulay",dueno:"Diego"},
+        { tipo: "perro",nombre:"Toby",dueno:"Andres"},
+        { tipo: "Loro",nombre:"Lazzy",dueno:"Mario"},
+        { tipo: "perro",nombre:"Moncho",dueno:"Juliana"},
     ]
 }
 
