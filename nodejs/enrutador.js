@@ -1,5 +1,4 @@
-    module.exports= {
-        
+    module.exports= {        
     ruta: (data, callback) => {
         callback(200, { mensaje: "Esta es /ruta" })
     },
