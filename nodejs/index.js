@@ -83,8 +83,7 @@ const enrutador = {
 
 const server=http.createServer(callbackDelServidor)
 
-
 server.listen(5000, () => {
-    console.log('...El servidor esta escuchando peticionnes en la url http://localhost:5000/');
+    console.log('El servidor esta escuchando peticionnes en la url http://localhost:5000/');
 });
 
