@@ -4,6 +4,7 @@ const StringDecoder = require('string_decoder').StringDecoder
 
 
 const callbackDelServidor = (req, res) => {
+
     // 1. obtener url desde el objeto request
     const urlActual = req.url
     const urlParseada = url.parse(urlActual, true)
@@ -58,7 +59,8 @@ const callbackDelServidor = (req, res) => {
         handler(data,(statusCode=200,mensaje)=>{
             const respuesta=JSON.stringify(mensaje)
             res.writeHead(statusCode)
-            // Linea donde realmente estamos respondiendo a la aplicacion Cliente
+
+    //4.1 Linea donde realmente estamos respondiendo a la aplicacion Cliente
             res.end(respuesta)
         })
     } 
