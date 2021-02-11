@@ -2,7 +2,7 @@ const http = require("http");
 const url = require("url");
 const StringDecoder = require("string_decoder").StringDecoder
 const enrutador=require("./enrutador")
-let recursos={
+global.recursos={
     mascotas:[
         { tipo: "perro",nombre:"Firulay",dueno:"Diego"},
         { tipo: "perro",nombre:"Firulay",dueno:"Diego"},
