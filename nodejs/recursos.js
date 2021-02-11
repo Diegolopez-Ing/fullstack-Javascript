@@ -11,5 +11,13 @@ module.exports={
         { nombre: "Susana",apellido:"Rua",documento:"998999"},
         { nombre: "Reinaldo",apellido:"Rueda",documento:"2021"},
        
+    ],
+    duenos:[
+        { nombre: "Sergio",apellido:"LOpez",documento:"1234244"},
+        { nombre: "Juliana",apellido:"Farid",documento:"76879"},
+        { nombre: "Sara",apellido:"Usuga",documento:"998999"},
+        { nombre: "Edgar",apellido:"Palacios",documento:"2021"},
+       
     ]
+
 }
