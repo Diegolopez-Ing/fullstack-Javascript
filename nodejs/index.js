@@ -1,12 +1,13 @@
-const http = require('http');
-const url = require('url');
-const StringDecoder = require('string_decoder').StringDecoder
+const http = require("http");
+const url = require("url");
+const StringDecoder = require("string_decoder").StringDecoder
+const enrutador=require("./enrutador")
 let recursos={
     mascotas:[
-        { tipo: 'perro',nombre:'Firulay',dueno:'Diego'},
-        { tipo: 'perro',nombre:'Firulay',dueno:'Diego'},
-        { tipo: 'perro',nombre:'Firulay',dueno:'Diego'},
-        { tipo: 'perro',nombre:'Firulay',dueno:'Diego'},
+        { tipo: "perro",nombre:"Firulay",dueno:"Diego"},
+        { tipo: "perro",nombre:"Firulay",dueno:"Diego"},
+        { tipo: "perro",nombre:"Firulay",dueno:"Diego"},
+        { tipo: "perro",nombre:"Firulay",dueno:"Diego"},
     ]
 }
 
@@ -21,7 +22,7 @@ const callbackDelServidor = (req, res) => {
     const ruta = urlParseada.pathname
 
     // 3.Quitar slash
-    const rutaLimpia = ruta.replace(/^\/+|\/+$/g, '')
+    const rutaLimpia = ruta.replace(/^\/+|\/+$/g, "")
 
     // 3.1 Método HTTP
     const metodo = req.method.toLowerCase();
@@ -34,32 +35,32 @@ const callbackDelServidor = (req, res) => {
     const { headers={} } = req
 
     // 3.4 Obtener payload en el caso de haberlo
-    const decoder = new StringDecoder('utf-8')
-    let buffer = ''
+    const decoder = new StringDecoder("utf-8")
+    let buffer = ""
 
     //3.4.1 Ir acumulando la data cuando request reciba un oayload
-    req.on('data', (data) => {
+    req.on("data", (data) => {
         buffer += decoder.write(data)
     })
 
     //3.4.2 Dejar de acumular Datos y decirle al decoder que finalice
-    req.on('end', () => {
+    req.on("end", () => {
         buffer += decoder.end()
-        if (headers['content-type']==='application/json') {
+        if (headers["content-type"]==="application/json") {
             buffer=JSON.parse(buffer)
         }
         // 3.4.3 Revisar si tiene subrutas, para este caso es el indice del array
         // let indice= null
 
-        if (rutaLimpia.indexOf('/')>= -1) {
-            var [rutaPrincipal,indice]=rutaLimpia.split('/')
+        if (rutaLimpia.indexOf("/")>= -1) {
+            var [rutaPrincipal,indice]=rutaLimpia.split("/")
         }
     // 3.5 Ordenar la data de request
     const data = {
         indice,
         ruta: rutaPrincipal || rutaLimpia,
         query,
-        metodo,
+        metodo, 
         headers,
         payload: buffer
     }
@@ -74,10 +75,10 @@ const callbackDelServidor = (req, res) => {
     }
 
     //4. Ejecutar el handler(manejador)para enviar la respuesta
-    if (typeof handler === 'function') {
+    if (typeof handler === "function") {
         handler(data,(statusCode=200,mensaje)=>{
             const respuesta=JSON.stringify(mensaje)
-            res.setHeader('Content-Type','application/json')
+            res.setHeader("Content-Type","application/json")
             res.writeHead(statusCode)
 
     //4.1 Linea donde realmente estamos respondiendo a la aplicacion Cliente
@@ -88,35 +89,13 @@ const callbackDelServidor = (req, res) => {
 
 }
 
-const enrutador = {
-    ruta: (data, callback) => {
-        callback(200, { mensaje: 'Esta es /ruta' })
-    },
-    mascotas: {
-        get:(data, callback) => {
-            if (typeof data.indice !== 'undefined') {
-                if (recursos.mascotas[data.indice]) {
-                    return callback(200,recursos.mascotas[data.indice])
-                }
-                return callback(404,{mensaje:`Mascota con indice ${data.indice} no encontrado`}) 
-            }
-            callback(200,recursos.mascotas)
-        },
-        post:(data, callback) => {
-            recursos.mascotas.push(data.payload)
-            callback(201,data.payload)
-        }
-    },
-    noEncontrado: (data, callback) => {
-        callback(404, { mensaje: 'no encontrado' })
-    }
-}
+
 
 
 const server=http.createServer(callbackDelServidor)
 
 server.listen(5000, () => {
-    console.log('El servidor esta escuchando peticionnes en la url http://localhost:5000/');
+    console.log("El servidor esta escuchando peticionnes en la url http://localhost:5000/");
 });
 
 
