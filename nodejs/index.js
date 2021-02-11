@@ -2,6 +2,7 @@ const http = require("http");
 const url = require("url");
 const StringDecoder = require("string_decoder").StringDecoder
 const enrutador=require("./enrutador")
+
 global.recursos={
     mascotas:[
         { tipo: "perro",nombre:"Firulay",dueno:"Diego"},
@@ -26,7 +27,6 @@ const callbackDelServidor = (req, res) => {
 
     // 3.1 Método HTTP
     const metodo = req.method.toLowerCase();
-
 
     // 3.2 Obtener Variables del query url parseado
     const { query = {} } = urlParseada
