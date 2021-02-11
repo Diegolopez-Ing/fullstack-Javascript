@@ -25,6 +25,17 @@
                 return callback(404,{mensaje:`Mascota con indice ${data.indice} no encontrado`}) 
             }
             callback(400,{mensaje:"Indice no enviado"})
+        },
+        delete:(data, callback) => {
+            if (typeof data.indice !== "undefined") {
+                if (global.recursos.mascotas[data.indice]) {
+                    global.recursos.mascotas=global.recursos.mascotas.filter(
+                        (_mascota, indice)=>indice!= data.indice)
+                    return callback(204,{mensaje: `elemento con indice ${data.indice} eliminado`})
+                }
+                return callback(404,{mensaje:`Mascota con indice ${data.indice} no encontrado`}) 
+            }
+            callback(400,{mensaje:"Indice no enviado"})
         }
     },
     noEncontrado: (data, callback) => {
