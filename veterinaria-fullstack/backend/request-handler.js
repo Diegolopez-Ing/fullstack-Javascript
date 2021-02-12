@@ -16,6 +16,18 @@ module.exports = (req, res) => {
 
     // 3.1 Método HTTP
     const metodo = req.method.toLowerCase();
+// 3.1.1 Dar perrmisos de CORSS
+    res.setHeader("Acces-Control-Allow-Origin","*")
+    res.setHeader("Acces-Control-Allow-Headers","*")
+    res.setHeader("Acces-Control-Allow-Methods","OPTIONS,PUT,GET,DELETE,POST")
+
+    // 3.1.2 Dar permiso de COORS escribieddo lo header
+
+    if (metodo==='options') {
+        res.writeHead(204)
+        res.end()
+        return
+    }
 
     // 3.2 Obtener Variables del query url parseado
     const { query = {} } = urlParseada
@@ -41,7 +53,7 @@ module.exports = (req, res) => {
         // 3.4.3 Revisar si tiene subrutas, para este caso es el indice del array
         // let indice= null
 
-        if (rutaLimpia.indexOf("/")>= -1) {
+        if (rutaLimpia.indexOf("/")> -1) {
             var [rutaPrincipal,indice]=rutaLimpia.split("/")
         }
     // 3.5 Ordenar la data de request

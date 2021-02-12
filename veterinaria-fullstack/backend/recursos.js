@@ -1,9 +1,8 @@
 module.exports={
     mascotas:[
         { tipo: "Gato",nombre:"Firulay",dueno:"Diego"},
-        { tipo: "perro",nombre:"Toby",dueno:"Andres"},
-        { tipo: "Loro",nombre:"Lazzy",dueno:"Mario"},
-        { tipo: "perro",nombre:"Moncho",dueno:"Juliana"},
+        { tipo: "Pájaro",nombre:"Toby",dueno:"Maria"},
+        { tipo: "Perro",nombre:"Moncho",dueno:"Sandra"},
     ],
     veterinarias:[
         { nombre: "Andrea",apellido:"Padierna",documento:"1234244"},
