@@ -38,7 +38,7 @@ async function listarDuenos() {
     return
     }
     listaDuenos.innerHTML = `<tr>
-        <td colspan="5">No hay Duenoss</td>
+        <td colspan="5">No hay Duen@s</td>
        <tr>`
     } catch (error) {
         $(".alert").show()

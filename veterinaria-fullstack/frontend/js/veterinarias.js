@@ -43,8 +43,7 @@ async function listarVeterinarias() {
     } catch (error) {
         $(".alert").show()
          
-    }
-    
+    }   
 
 }
 
