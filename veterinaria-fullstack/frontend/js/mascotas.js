@@ -84,7 +84,6 @@ async function enviarDatos(evt) {
 function editar(index) {
     return function cuandoHagoClick() {
         btnGuardar.innerHTML = 'Editar'
-        // $('#staticBackdrop').modal('toggle')
         const mascota = mascotas[index]
         nombre.value = mascota.nombre
         tipo.value = mascota.tipo
@@ -107,6 +106,7 @@ function eliminar(index) {
         try {
             const respuesta = await fetch(urlEnvio, {
                 method: 'DELETE',
+                mode:"cors"
 
             })
             if (respuesta.ok) {

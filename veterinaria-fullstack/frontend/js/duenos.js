@@ -43,7 +43,7 @@ async function listarDuenos() {
     } catch (error) {
         $(".alert").show()
     }
-
+    
     }
 
 async function enviarDatos(evt) {
@@ -55,26 +55,32 @@ async function enviarDatos(evt) {
             apellido: apellido.value        
         }
         const accion=btnGuardar.innerHTML
-        switch (accion) {
-            case 'Editar':
-                duenos[indice.value]=datos
-                break;    
-            default:
-                duenos.push(datos)
-                break;
-        }       
+
+        if (accion==="Editar") {
+           duenos[indice.value]=datos
+           urlEnvio = `${url}/${indice.value}`
+           method = "PUT"
+        }  
+        const respuesta = await fetch(urlEnvio, {
+            method,
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(datos),
+            mode:"cors"
+        })     
+        if (respuesta.ok) {
         listarDuenos()
         resetModal()
+        }
     } catch (error) {
         $(".alert").show()
-    }
-    
+    }    
 }
 
 function editar(index) {
     return function cuandoHagoClick() {
         btnGuardar.innerHTML='Editar'
-        // $('#staticBackdrop').modal('toggle')
         const dueno=duenos[index]
         nombre.value=dueno.nombre
         documento.value=dueno.documento
