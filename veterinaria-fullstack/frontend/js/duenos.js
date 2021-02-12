@@ -1,38 +1,26 @@
-const listaDuenos=document.getElementById('lista-duenos')
 const nombre=document.getElementById('nombre')
-const identificacion=document.getElementById('identificacion')
-const pais=document.getElementById('pais')
+const documento=document.getElementById('identificacion')
 const indice=document.getElementById('indice')
 const apellido=document.getElementById('apellido')
 const form=document.getElementById('form')
 const btnGuardar=document.getElementById('btn-guardar')
+const listaDuenos=document.getElementById('lista-duenos')
+const url="http://localhost:5000/veterinarias"
 
-let duenos = [
-    {
-        pais: 'Peru',
-        nombre: 'Manchas',
-        apellido: 'Diego',
-        identificacion: '1023'
-    },
-    {
-        pais: 'Colombia',
-        nombre: 'Manchas',
-        apellido: 'Maria',
-        identificacion: '1023'
-    },
-    {
-        pais: 'Venezuela',
-        nombre: 'Manchas',
-        apellido: 'Diego',
-        identificacion: '1023'
+
+let duenos = []
+
+async function listarDuenos() {
+    try {
+        const respuesta = await fetch(url)
+    const duenosDelServer = await respuesta.json()
+    if (Array.isArray(duenosDelServer)) {
+        duenos = duenosDelServer
     }
-]
-
-function listarDuenos() {
-    const htmlDuenos = duenos.map((dueno, index) => `<tr>
+    if (duenos.length>0) {
+        const htmlDuenos = duenos.map((dueno, index) => `<tr>
         <th scope="row">${index}</th>
-        <td>${dueno.identificacion}</td>
-        <td>${dueno.pais}</td>
+        <td>${dueno.documento}</td>
         <td>${dueno.apellido}</td>
         <td>${dueno.nombre}</td>
 
@@ -47,27 +35,40 @@ function listarDuenos() {
     listaDuenos.innerHTML = htmlDuenos
     Array.from(document.getElementsByClassName('editar')).forEach((botonEditar,index)=>botonEditar.onclick=editar(index))
     Array.from(document.getElementsByClassName('eliminar')).forEach((botonEliminar,index)=>botonEliminar.onclick=eliminar(index))
-}
-
-function enviarDatos(evt) {
-    evt.preventDefault()
-    const datos={
-        pais: pais.value,
-        identificacion: identificacion.value,
-        nombre: nombre.value,
-        apellido: apellido.value        
+    return
     }
-    const accion=btnGuardar.innerHTML
-    switch (accion) {
-        case 'Editar':
-            duenos[indice.value]=datos
-            break;    
-        default:
-            duenos.push(datos)
-            break;
-    }       
-    listarDuenos()
-    resetModal()
+    listaDuenos.innerHTML = `<tr>
+        <td colspan="5">No hay Duenoss</td>
+       <tr>`
+    } catch (error) {
+        $(".alert").show()
+    }
+
+    }
+
+async function enviarDatos(evt) {
+    evt.preventDefault()
+    try {
+        const datos={
+            documento: documento.value,
+            nombre: nombre.value,
+            apellido: apellido.value        
+        }
+        const accion=btnGuardar.innerHTML
+        switch (accion) {
+            case 'Editar':
+                duenos[indice.value]=datos
+                break;    
+            default:
+                duenos.push(datos)
+                break;
+        }       
+        listarDuenos()
+        resetModal()
+    } catch (error) {
+        $(".alert").show()
+    }
+    
 }
 
 function editar(index) {
@@ -76,8 +77,7 @@ function editar(index) {
         // $('#staticBackdrop').modal('toggle')
         const dueno=duenos[index]
         nombre.value=dueno.nombre
-        pais.value=dueno.pais
-        identificacion.value=dueno.identificacion
+        documento.value=dueno.documento
         apellido.value=dueno.apellido
         indice.value= index
         
@@ -86,18 +86,27 @@ function editar(index) {
 
 function resetModal() {
     nombre.value=''
-    pais.value=''
     apellido.value=''
-    identificacion.value=''
+    documento.value=''
     indice.value=''
     btnGuardar.innerHTML='Crear'
 }
 
-function eliminar(index) {    
-    return function clickEliminar() {
-        console.log('index',index); 
-        duenos=duenos.filter((dueno,indiceDueno)=>indiceDueno !== index)
-        listarDuenos()
+function eliminar(index) {
+    const urlEnvio=`${url}/${index}`    
+    return async function clickEliminar() {
+        try {
+            const respuesta = await fetch(urlEnvio, {
+                method: 'DELETE',
+                mode:"cors"
+            })
+            if (respuesta.ok) {
+                listarDuenos()
+            }
+        } catch (error) {
+            $(".alert").show() 
+        }
+        
     }
     
 }
