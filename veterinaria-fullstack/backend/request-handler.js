@@ -17,13 +17,13 @@ module.exports = (req, res) => {
     // 3.1 Método HTTP
     const metodo = req.method.toLowerCase();
 // 3.1.1 Dar perrmisos de CORSS
-    res.setHeader("Acces-Control-Allow-Origin","*")
-    res.setHeader("Acces-Control-Allow-Headers","*")
-    res.setHeader("Acces-Control-Allow-Methods","OPTIONS,PUT,GET,DELETE,POST")
+    res.setHeader("Access-Control-Allow-Origin","*")
+    res.setHeader("Access-Control-Allow-Headers","*")
+    res.setHeader("Access-Control-Allow-Methods","OPTIONS,GET,PUT,DELETE,POST")
 
     // 3.1.2 Dar permiso de COORS escribieddo lo header
 
-    if (metodo==='options') {
+    if (metodo === 'options') {
         res.writeHead(204)
         res.end()
         return
