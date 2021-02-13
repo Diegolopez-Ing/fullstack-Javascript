@@ -1,4 +1,4 @@
-const mascota = require("../../backend/ruta/mascota")
+// const mascota = require("../../backend/ruta/mascota")
 
 const nombre = document.getElementById('nombre')
 const tipo = document.getElementById('tipo')
@@ -58,19 +58,17 @@ async function enviarDatos(evt) {
         let urlEnvio = url
         const accion = btnGuardar.innerHTML
         if (accion === 'Editar') {
-
             mascotas[indice.value] = datos
             urlEnvio = `${url}/${indice.value}`
             method = "PUT"
-
         }
+
         const respuesta = await fetch(urlEnvio, {
             method,
             headers: {
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify(datos),
-            mode:"cors"
         })
         if (respuesta.ok) {
             listarMascotas()
