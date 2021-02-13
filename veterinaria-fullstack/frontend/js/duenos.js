@@ -81,7 +81,6 @@ async function enviarDatos(evt) {
 function editar(index) {
     return function cuandoHagoClick() {
         btnGuardar.innerHTML='Editar'
-        $("#exampleModalCenter").modal("toggle")
         const dueno=duenos[index]
         nombre.value=dueno.nombre
         documento.value=dueno.documento
@@ -97,8 +96,6 @@ function resetModal() {
     documento.value=''
     indice.value=''
     btnGuardar.innerHTML='Crear'
-    $("#exampleModalCenter").modal("toggle")
-
 }
 
 function eliminar(index) {
