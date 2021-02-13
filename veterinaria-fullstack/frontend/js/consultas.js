@@ -1,6 +1,11 @@
 const listaConsultas = document.getElementById("lista-consultas")
 const mascota=document.getElementById("mascota")
 const veterinaria=document.getElementById("veterinaria")
+const diagnostico=document.getElementById("diagnostico")
+const historia=document.getElementById("historia")
+const btnGuardar=document.getElementById('btn-guardar')
+const indice=document.getElementById('idice')
+
 
 let consultas=[]
 let mascotas=[]
@@ -28,12 +33,14 @@ async function listarConsultas(){
                     <td>
                         <div class="btn-group" role="group" aria-label="Basic example">
                             <button type="button" class="btn btn-info" ><i class="bi bi-pencil-square"></i></button>
-                            <button type="button" class="btn btn-danger"><i class="bi bi-trash"></i></button>
+                            <button type="button" class="editar" class="btn btn-danger"><i class="bi bi-trash"></i></button>
                         </div>
                     </td>
                 </tr>`
             ).join("")
             listaConsultas.innerHTML=htmlConsultas
+            Array.from(document.getElementsByClassName('editar')).forEach((botonEditar,index)=>botonEditar.onclick=editar(index))
+
         }
     } catch (error) {
         throw error
@@ -81,6 +88,17 @@ async function listarVeterinarias(){
         }
     } catch (error) {
         throw error
+    }
+}
+
+function editar(index) {
+    return function cuandoHagoClick() {
+        btnGuardar.innerHTML='Editar'
+        const consulta=consultas[index]
+        mascota.value=consulta.mascota.id
+        veterinaria.value=consulta.veterinaria.id
+        historia.value=consulta.historia
+        diagnostico.value= consulta.diagnostico
     }
 }
 

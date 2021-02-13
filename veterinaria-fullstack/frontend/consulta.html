@@ -79,11 +79,13 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="staticBackdropLabel">Nueva Masscota</h5>
+                    <h5 class="modal-title" id="staticBackdropLabel">Nueva Mascota</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
+                    <input type="hiden" id="indice">
                     <div class="row g-3" id="select">
+
                         <div class="col">
                             <select class="form-select" aria-label="Default select example" id="mascota">
                                 <option selected>Seleccione una Mascota</option>
@@ -115,7 +117,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Understood</button>
+                    <button type="button" class="btn btn-primary" id="btn-guardar">Save Change</button>
                 </div>
             </div>
         </div>
