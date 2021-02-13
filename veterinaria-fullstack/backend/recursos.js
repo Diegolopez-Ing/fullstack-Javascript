@@ -1,35 +1,31 @@
-module.exports={
-    mascotas:[
-        { tipo: "Gato",nombre:"Firulay",dueno:"Diego"},
-        { tipo: "Pájaro",nombre:"Toby",dueno:"Maria"},
-        { tipo: "Perro",nombre:"Moncho",dueno:"Sandra"},
+module.exports = {
+    mascotas: [
+      { tipo: "Perro", nombre: "Trosky0", dueno: "Camilo" },
+      { tipo: "Perro", nombre: "Trosky1", dueno: "Camilo" },
+      { tipo: "Perro", nombre: "Trosky2", dueno: "Camilo" },
+      { tipo: "Perro", nombre: "Trosky3", dueno: "Camilo" },
+      { tipo: "Perro", nombre: "Trosky4", dueno: "Camilo" },
     ],
-    veterinarias:[
-        { nombre: "Andrea",apellido:"Padierna",documento:"1234244"},
-        { nombre: "Alexander",apellido:"Rovira",documento:"76879"},
-        { nombre: "Susana",apellido:"Rua",documento:"998999"},
-        { nombre: "Reinaldo",apellido:"Rueda",documento:"2021"},
-       
+    veterinarias: [
+      { nombre: "Alexandra", apellido: "Perez", documento: "1234567890" },
+      { nombre: "Alexander", apellido: "Gómez", documento: "4234569999" },
+      { nombre: "Julián", apellido: "Madrid", documento: "555666777" },
+      { nombre: "Naryie", apellido: "Vasquez", documento: "1000666777" },
     ],
-    duenos:[
-        { nombre: "Sergio",apellido:"LOpez",documento:"1234244"},
-        { nombre: "Juliana",apellido:"Farid",documento:"76879"},
-        { nombre: "Sara",apellido:"Usuga",documento:"998999"},
-        { nombre: "Edgar",apellido:"Palacios",documento:"2021"},
-       
+    duenos: [
+      { nombre: "Alejandra", apellido: "Ramirez", documento: "12343333890" },
+      { nombre: "Alexandra", apellido: "Fernandez", documento: "4234564321" },
+      { nombre: "Julio", apellido: "Tamayo", documento: "456666777" },
+      { nombre: "Natalia", apellido: "Gonzales", documento: "9000666777" },
     ],
-    consultas:[
-        { 
-            mascota: 0,
-            veterinaria:0,
-            fechaCreacion: new Date(),
-            fechaEdicion: new Date(),
-            historia:"",
-            diagnostico:"diagnostico"
-        },
-
-       
-    ]
-
-
-}
+    consultas: [
+      {
+        mascota: 0,
+        veterinaria: 0,
+        fechaCreacion: new Date(),
+        fechaEdicion: new Date(),
+        historia: "",
+        diagnostico: "diagnostico",
+      },
+    ],
+  };

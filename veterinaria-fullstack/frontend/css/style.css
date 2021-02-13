@@ -1,19 +1,28 @@
-.action-menu{
+.actions-menu {
     padding: 40px 30px;
-}
-#select{
-    padding: 20px 0px;
-}
-.action-menu h1{
-    margin-bottom: 20px 0px;
-}
-.action-menu-content{
+  }
+  
+  .actions-menu h1 {
+    margin-bottom: 20px;
+  }
+  
+  .form-row {
+    padding: 20px 0px; 
+  }
+  
+  .lista-vacia {
+    text-align: center;
+  }
+  
+  .actions-menu-content {
     display: flex;
     justify-content: space-between;
-}
-.action-menu-content>button.btn.btn-primary{
+  }
+  
+  .actions-menu-content > button.btn.btn-primary {
     height: 40px;
-}
-.alert{
+  }
+  
+  .alert {
     display: none;
-}
+  }
