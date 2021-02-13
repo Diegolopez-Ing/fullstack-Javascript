@@ -131,10 +131,20 @@ async function enviarDatos(evt) {
         })     
         if (respuesta.ok) {
         listarConsultas()
+        resetModal()
         }
     } catch (error) {
         throw error
     }    
+}
+
+function resetModal() {
+    indice.value=''
+    btnGuardar.innerHTML='Crear'
+    mascota.value=""
+    veterinaria.value=""
+    diagnostico.value=""
+    historia.value=""
 }
 
 btnGuardar.onclick=enviarDatos
