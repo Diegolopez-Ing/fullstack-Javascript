@@ -54,17 +54,24 @@
         <div class="action-menu">
             <!-- Button trigger modal -->
             <h1>Veterinari@s</h1>
-            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-                Nueva
-            </button>
+            <div class="acctions-menu-content">
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                    Nueva
+                </button>
+                <div class="alert alert-danger alert-dismissible fade" role="alert">
+                    <strong>Oops!</strong> Algo hicimos mal, por favor vuelve a intentarlo!
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            </div>
         </div>
 
         <table class="table table-striped table-hover">
             <thead class="table-dark">
                 <tr>
                     <th scope="col">#</th>
-                    <th scope="col">Identificacion</th>
-                    <th scope="col">Pais</th>
+                    <th scope="col">Documento</th>
                     <th scope="col">Nombre</th>
                     <th scope="col">Apellido</th>
                     <th scope="col">Acciones</th>
@@ -129,7 +136,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"
         crossorigin="anonymous"></script>
-    <script src="js/veterinarias.js"></script>
+    <script src="./js/veterinarias.js"></script>
 
 
 </body>

@@ -7,3 +7,13 @@
 .action-menu h1{
     margin-bottom: 20px 0px;
 }
+.action-menu-content{
+    display: flex;
+    justify-content: space-between;
+}
+.action-menu-content>button.btn.btn-primary{
+    height: 40px;
+}
+.alert{
+    display: none;
+}
