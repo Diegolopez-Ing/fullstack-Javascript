@@ -1,8 +1,10 @@
 const listaConsultas = document.getElementById("lista-consultas")
 const mascota=document.getElementById("mascota")
+const veterinaria=document.getElementById("veterinaria")
 
 let consultas=[]
 let mascotas=[]
+let veterinarias=[]
 const url="http://localhost:5000"
 
 async function listarConsultas(){
@@ -59,6 +61,29 @@ async function listarMascotas(){
         throw error
     }
 }
+listarMascotas()
 
+async function listarVeterinarias(){
+    const entidad="veterinarias"
+    try {
+        const respuesta=await fetch(`${url}/${entidad}`)
+        const veterinariasDelServidor= await respuesta.json()
+        if (Array.isArray(veterinariasDelServidor)) {
+            veterinarias=veterinariasDelServidor
+        }
+        if (respuesta.ok) {
+            const htmlVeterinarias=veterinarias.forEach((_veterinaria, indice)=>{
+                const optionActual =document.createElement("option")
+                optionActual.innerHTML=`${_veterinaria.nombre} ${_veterinaria.apellido}`
+                optionActual.value=indice
+                veterinaria.appendChild(optionActual)
+            })
+        }
+    } catch (error) {
+        throw error
+    }
+}
+
+listarVeterinarias()
 
    
