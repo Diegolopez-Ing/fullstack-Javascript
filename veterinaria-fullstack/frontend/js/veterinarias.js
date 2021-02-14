@@ -5,7 +5,7 @@ const indice = document.getElementById("indice");
 const form = document.getElementById("form");
 const btnGuardar = document.getElementById("btn-guardar");
 const listaVeterinarias = document.getElementById("lista-veterinarias");
-const url = "https://veterinaria-backend-delta.vercel.app/veterinarias";
+const url = "https://veterinaria-backend.now.sh/veterinarias";
 let veterinarias = [];
 
 async function listarVeterinarias() {
